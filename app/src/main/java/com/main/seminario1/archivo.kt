@@ -1,29 +1,43 @@
 package com.main.seminario1
 
+import android.speech.tts.TextToSpeech
+import java.util.Locale
+
 fun main(){
     //ej1
-    val listaPrueba = listOf(1,2,3);
-    println(mayor(listaPrueba));
+    //val listaPrueba = listOf(1,2,3);
+    //println(mayor(listaPrueba));
 
 
     //ej2
-    println(sumatoria(listaPrueba))
+    //println(sumatoria(listaPrueba))
 
     //ej3
-    println(millasAkms(2.0))
+    //println(millasAkms(2.0))
 
     //ej4
-    println(palindromo("yoese"));
+    //println(palindromo("yoese"));
 
     //ej5
-    println(contarLetra("aaeeass","a"));
+    //println(contarLetra("aaeeass","a"));
 
     //ej6
+    println(contarCadena("holo que tal", "oq" ))
 
+    //ej7
+    //println(primeraMayusc("nose ya que poner"));
 
+    //ej8
+    //println(sumaDigitos(123))
+
+    //ej9
+
+    //ej10
 
 
 }
+
+
 //Ejercicio 1. Crea una función que obtenga el número máximo de una lista de números
 fun mayor(list: List<Int>):Int{
     var max=0;
@@ -74,25 +88,45 @@ fun contarLetra(texto: String, letra:String):Int{
 //Ejercicio 6. Crea una función que cuenta cuántas veces aparece una subcadena en un texto.#########################
 fun contarCadena(texto: String, cadena:String):Int{
     var cont =0;
-    val letras = texto.split(" ");
-    for (l in letras){
-        if (l==cadena){
-            cont++;
+    var contsub = 0;
+    var primeracadena= cadena[0];
+
+    for (i in texto){
+        if (cont>0){
+            if (i==cadena[cont]){
+                cont++
+            }else{
+                cont =0
+            }
+
+        if (i==primeracadena){
+            cont ++
+        }else{
+            cont = 0
         }
+
+        if (cont == cadena.length){
+            contsub++;
+        }
+
     }
-    return cont;
+    return contsub;
 }
 
 
 //Ejercicio 7. Crea una función que pone en mayúscula la primera letra de cada palabra de un texto
-fun primeraMayusc(texto:String):String{
-    var palabras = texto.split(" ");
-    var palabrasMayus ;
+fun primeraMayusc(texto: String): String {
+    var letras = texto.split("")
+    var salida = ""
 
-    for (p in palabras){
-
+    for (i in 0 .. texto.length){
+        if (i==1){
+            salida += texto[0].uppercase();
+        }else{
+            salida += letras[i]
+        }
     }
-
+    return salida;
 }
 
 //Ejercicio 8. Crea una función que sume los dígitos de un número. Ejemplo: sumaDigitos(245) = 2 + 4 + 5 = 11
