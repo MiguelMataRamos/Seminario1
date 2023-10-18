@@ -45,6 +45,40 @@ fun main(){
 
     //ej14
 
+    //ej15
+
+    //ej15
+
+    //ej16
+
+    //ej17
+
+    //ej18
+
+    //ej19
+
+    //ej20
+
+    //ej21
+
+    //ej22
+
+    //ej23
+
+    //ej24
+
+    //ej25
+
+    //ej26
+
+    //ej27
+
+    //ej28
+
+    //ej29
+
+    //ej30
+
 
 }
 
@@ -205,6 +239,15 @@ fun capicua(numero:Int):Boolean{
 //Ejercicio 15. Crear una función que reciba dos arrays de enteros y devuelva un array de booleanos
 //que determine si los elementos, uno a uno, de ambos arrays son iguales
 
+//Ejercicio 16: Crea una función que calcule el producto de todos los elementos en una lista de números.
+
+//Ejercicio 17: Crea una función que dada una lista de números, devuelva una nueva lista con solo los números pares.
+
+
+//Ejercicio 18: Crea una función que determine si un número es primo.
+
+
+//Ejercicio 19: Crea una función que, dada una cadena de texto, elimine todas las vocales de la cadena.
 
 //Ejercicio 20: Crea una función que calcule el factorial de un número.
 
@@ -242,7 +285,6 @@ fun capicua(numero:Int):Boolean{
 
 //Ejercicio 29: Crea una función que determine si una cadena de texto es un anagrama de otra cadena.
 // Dos palabras son anagramas si tienen las mismas letras, pero en un orden diferente.
-
 
 
 //Ejercicio 30: Crea una función que, dado un número entero, devuelva True si es un número triangular
