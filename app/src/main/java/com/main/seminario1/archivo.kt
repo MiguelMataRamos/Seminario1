@@ -42,9 +42,8 @@ fun main(){
 
     //ej13
 
-
     //ej14
-
+    println(mosaico(6))
     //ej15
 
     //ej15
@@ -234,6 +233,14 @@ fun capicua(numero:Int):Boolean{
 //4444
 //55555
 //666666
+fun mosaico(n:Int){
+    for (i in 1..n){
+        for (j in 1..i){
+            print(i)
+        }
+        println()
+    }
+}
 
 
 //Ejercicio 15. Crear una función que reciba dos arrays de enteros y devuelva un array de booleanos
