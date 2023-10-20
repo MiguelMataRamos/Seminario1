@@ -36,6 +36,7 @@ fun main(){
     //println(fibo(6))
 
     //ej11
+    //println(primosRelativos(2,4))
 
     //ej12
     //println(capicua(1213));
@@ -59,32 +60,49 @@ fun main(){
     //val lista1 = listOf(1,2,3,4)
     //println(pares(lista1))
     //print(paresConFilter(lista1))
+
     //ej18
+    //println(primo(8))
 
     //ej19
+    //println(eliminarVocales("macarrones con queso"))
 
     //ej20
+    //println(factorial(10))
 
     //ej21
+    //println(invertirCadena("onam al ne otirrop nu noc"))
 
     //ej22
+    //println(numeroPerfecto(10))
 
     //ej23
+    //println(numeroArmstrong(153))
 
     //ej24
+    //val lista1 = listOf(1,2,3,4)
+    //println(numeroMasGrande(lista1))
 
     //ej25
+    //val lista1 = listOf(1,2,3,4)
+    //println(numeroMasPequeño(lista1))
 
     //ej26
+    //var lista = listOf("palabra", "mas", "larga")
+    //println(palabraMasLarga(lista))
 
     //ej27
+    //var lista = listOf("palabra", "mas", "corta")
+    //println(palabraMasCorta())
 
     //ej28
+    //println(soloLetrasEspacios("12 ajsgygs"))
 
     //ej29
+    //println(anagrama("hola","olha"))
 
     //ej30
-
+    //println(numeroTriangular(40))
 
 }
 
@@ -211,10 +229,9 @@ fun fibo (numero: Int):Int{
 }
 
 //Ejercicio 11. Crea una función que determine si dos números son primos relativos.
-fun primosRelativos(n1: Int, n2: Int):Boolean{
-
-
-    return true
+fun primosRelativos(numero1: Int, numero2: Int): Boolean {
+    val mcd = mcd(numero1, numero2)
+    return mcd == 1
 }
 
 //Ejercicio 12. Crea una función que determine si un número dado es capicúa
@@ -305,51 +322,183 @@ fun paresConFilter(lista: List<Int>): List<Int> {
 }
 
 //Ejercicio 18: Crea una función que determine si un número es primo.
+fun primo(numero: Int): Boolean {
+    if (numero <= 1) {
+        return false
+    }
 
+    if (numero <= 3) {
+        return true
+    }
+
+    if (numero % 2 == 0 || numero % 3 == 0) {
+        return false
+    }
+
+    var i = 5
+    while (i * i <= numero) {
+        if (numero % i == 0 || numero % (i + 2) == 0) {
+            return false
+        }
+        i += 6
+    }
+
+    return true
+}
 
 //Ejercicio 19: Crea una función que, dada una cadena de texto, elimine todas las vocales de la cadena.
-
+fun eliminarVocales(cadena: String): String {
+    return cadena.replace(Regex("[aeiouAEIOU]"), "")
+}
 
 //Ejercicio 20: Crea una función que calcule el factorial de un número.
-
+fun factorial(numero: Int): Int {
+    var res = 1
+    for (i in 1..numero) {
+        res *= i
+    }
+    return res
+}
 
 //Ejercicio 21: Crea una función que invierta una cadena de texto. Por ejemplo, "hola" debería convertirse en "aloh".
-
+fun invertirCadena(cadena: String): String {
+    return cadena.reversed()
+}
 
 //Ejercicio 22: Crea una función que, dado un número, devuelva True si es un número perfecto (la suma de
 //sus divisores propios positivos es igual al número), o False en caso contrario.
+fun numeroPerfecto(numero: Int): Boolean {
+    var suma = 0
 
+    for (i in 1 until numero) {
+        if (numero % i == 0) {
+            suma += i
+        }
+    }
+
+    return suma == numero
+}
 
 //Ejercicio 23: Crea una función que, dado un número entero, devuelva True si es un número Armstrong (un
 //número que es igual a la suma de sus propios dígitos elevados a una potencia). Por ejemplo, 153 es un
 //número Armstrong porque 1^3 + 5^3 + 3^3 = 153.
+fun numeroArmstrong(numero: Int): Boolean {
+    val n = numero.toString().length
+    var suma = 0
+    var num = numero
+
+    while (num > 0) {
+        val digito = num % 10
+        suma += Math.pow(digito.toDouble(), n.toDouble()).toInt()
+        num /= 10
+    }
+
+    return suma == numero
+}
 
 
 //Ejercicio 24: Crea una función que encuentre el número más grande en una matriz bidimensional
 //(una lista de listas).
+fun numeroMasGrande(matriz: List<List<Int>>): Int {
+    var maximo = 0
 
+    for (fila in matriz) {
+        for (elemento in fila) {
+            if (elemento > maximo) {
+                maximo = elemento
+            }
+        }
+    }
+
+    return maximo
+}
 
 //Ejercicio 25: Crea una función que encuentre el número más pequeño en una matriz
 //bidimensional (una lista de listas).
+fun numeroMasPequeño(matriz: List<List<Int>>): Int {
+    var minimo = matriz[0][0]
 
+    for (fila in matriz) {
+        for (elemento in fila) {
+            if (elemento < minimo) {
+                minimo = elemento
+            }
+        }
+    }
+
+    return minimo
+}
 
 //Ejercicio 26: Crea una función que, dada una lista de palabras, devuelva la palabra más larga.
+fun palabraMasLarga(listaPalabras: List<String>): String? {
 
+    var palabraMasLarga = listaPalabras[0]
+
+    for (palabra in listaPalabras) {
+        if (palabra.length > palabraMasLarga.length) {
+            palabraMasLarga = palabra
+        }
+    }
+
+    return palabraMasLarga
+}
 
 //Ejercicio 27: Crea una función que, dada una lista de palabras, devuelva la palabra más corta.
+fun palabraMasCorta(listaPalabras: List<String>): String? {
+    if (listaPalabras.isEmpty()) {
+        return null // Devolver null si la lista está vacía.
+    }
 
+    var palabraMasCorta = listaPalabras[0]
+
+    for (palabra in listaPalabras) {
+        if (palabra.length < palabraMasCorta.length) {
+            palabraMasCorta = palabra
+        }
+    }
+
+    return palabraMasCorta
+}
 
 //Ejercicio 28: Crea una función que determine si una cadena de texto contiene solo
 //caracteres alfabéticos (letras) y espacios en blanco.
-
+fun soloLetrasEspacios(cadena: String): Boolean {
+    for (caracter in cadena) {
+        if (!caracter.isLetter() && caracter != ' ') {
+            return false
+        }
+    }
+    return true
+}
 
 //Ejercicio 29: Crea una función que determine si una cadena de texto es un anagrama de otra cadena.
 // Dos palabras son anagramas si tienen las mismas letras, pero en un orden diferente.
+fun anagrama(cadena1: String, cadena2: String): Boolean {
+    var cadena1Limpia = cadena1.replace("\\s".toRegex(), "").toLowerCase()
+    var cadena2Limpia = cadena2.replace("\\s".toRegex(), "").toLowerCase()
 
+    var cadena1Ordenada = cadena1Limpia.toCharArray().sorted().joinToString("")
+    var cadena2Ordenada = cadena2Limpia.toCharArray().sorted().joinToString("")
+
+    return cadena1Ordenada == cadena2Ordenada
+}
 
 //Ejercicio 30: Crea una función que, dado un número entero, devuelva True si es un número triangular
 // (puede representarse como un triángulo equilátero de puntos), o False en caso contrario.
+fun numeroTriangular(numero: Int): Boolean {
+    var n = 1
+    var suma = 0
 
+    while (suma < numero) {
+        suma += n
+        if (suma == numero) {
+            return true
+        }
+        n++
+    }
+
+    return false
+}
 
 //Ejercicio 31: Duplicar Elementos en una Lista
 //Escribe una función que tome una lista de números y utilice la función map para
